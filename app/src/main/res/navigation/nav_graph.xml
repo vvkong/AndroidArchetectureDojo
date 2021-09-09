@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_task_list">
+
+    <fragment
+        android:id="@+id/nav_task_list"
+        android:name="com.ayu.archetecture.todoapp.tasks.list.TasksFragment"
+        android:label="任务列表" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_task_statistics"
+        android:name="com.ayu.archetecture.todoapp.tasks.statistics.StatisticsFragment"
+        android:label="任务统计">
+    </fragment>
+</navigation>
