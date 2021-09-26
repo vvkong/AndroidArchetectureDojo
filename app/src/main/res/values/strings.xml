@@ -3,4 +3,19 @@
 
     <string name="close">close</string>
     <string name="open">open</string>
+
+    <string name="all_tasks">所有任务</string>
+    <string name="active_tasks">活跃任务</string>
+    <string name="complete_tasks">已完成任务</string>
+    <string name="no_tasks">没有任务</string>
+    <string name="label_all">所有任务</string>
+    <string name="label_no_task">您还没创建任务</string>
+    <string name="label_active">进行中任务</string>
+    <string name="label_no_active">没有任务要执行哦</string>
+    <string name="label_completed">已完成任务</string>
+    <string name="label_no_completed">暂无已完成任务</string>
+    <string name="show_filtering_popup_menu">展示筛选菜单</string>
+    <string name="clear_completed_tasks">清除已完成任务</string>
+    <string name="open_task">打开任务详情</string>
+    <string name="navigate_to_add_new_task">打开新建任务界面</string>
 </resources>

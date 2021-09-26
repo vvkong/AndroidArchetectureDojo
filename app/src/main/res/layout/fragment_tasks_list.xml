@@ -1,18 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <import type="android.view.View"/>
+        <import type="androidx.core.content.ContextCompat"/>
+        <variable
+            name="vm"
+            type="com.ayu.archetecture.todoapp.tasks.list.TasksViewModel" />
     </data>
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-        <TextView
+        android:layout_height="match_parent">
+
+        <com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{vm::refresh}"
+            app:refreshing="@{vm.dataLoading}"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/llContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{vm.empty ? View.GONE : View.VISIBLE}"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvListTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:text="@{context.getString(vm.resFilterLabel)}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/task_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:items="@{vm.items}"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.empty?View.VISIBLE:View.GONE}"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/no_tasks_icon"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_gravity="center"
+                        android:src="@{ContextCompat.getDrawable(context, vm.resNoTaskIcon)}"
+                        android:contentDescription="@string/no_tasks" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{context.getString(vm.resNoTaskLabel)}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                </LinearLayout>
+            </FrameLayout>
+        </com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/faAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="任务列表"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
-    </LinearLayout>
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/ic_add"
+            android:layout_margin="16dp"
+            app:fabSize="normal"
+            android:onClick="@{()->vm.navigateToAddNewTask()}"
+            android:visibility="@{vm.btnAddTaskVisible?View.VISIBLE:View.GONE}"/>
+    </FrameLayout>
 </layout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.widget.CompoundButton"/>
+        <variable
+            name="vm"
+            type="com.ayu.archetecture.todoapp.tasks.list.TasksViewModel" />
+        <variable
+            name="task"
+            type="com.ayu.archetecture.todoapp.tasks.data.entity.Task" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:onClick="@{()->vm.openTask(task.id)}">
+
+        <CheckBox
+            android:id="@+id/complete_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:checked="@{task.completed}"
+            android:onClick="@{(v)->vm.completeTask(task, ((CompoundButton)v).isChecked())}"/>
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="@{task.titleForList}"
+            app:completedTask="@{task.completed}" />
+    </LinearLayout>
+</layout>
