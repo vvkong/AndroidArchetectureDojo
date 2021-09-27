@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.utils
+package com.ayu.archetecture.todoapp.tasks.ui.utils
 
 import androidx.lifecycle.Observer
 

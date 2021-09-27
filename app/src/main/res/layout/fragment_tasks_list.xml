@@ -8,14 +8,14 @@
         <import type="androidx.core.content.ContextCompat"/>
         <variable
             name="vm"
-            type="com.ayu.archetecture.todoapp.tasks.list.TasksViewModel" />
+            type="com.ayu.archetecture.todoapp.tasks.ui.list.TasksViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout
+        <com.ayu.archetecture.todoapp.tasks.ui.widget.ScrollChildSwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -69,7 +69,7 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
                 </LinearLayout>
             </FrameLayout>
-        </com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout>
+        </com.ayu.archetecture.todoapp.tasks.ui.widget.ScrollChildSwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/faAdd"

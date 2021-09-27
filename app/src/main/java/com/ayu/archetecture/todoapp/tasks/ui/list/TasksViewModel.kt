@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.list
+package com.ayu.archetecture.todoapp.tasks.ui.list
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -7,7 +7,8 @@ import com.ayu.archetecture.todoapp.tasks.data.entity.Task
 import com.ayu.archetecture.todoapp.tasks.data.entity.Result
 import com.ayu.archetecture.todoapp.tasks.data.TasksRepository
 import com.ayu.archetecture.todoapp.R
-import com.ayu.archetecture.todoapp.tasks.utils.Event
+import com.ayu.archetecture.todoapp.tasks.ui.ADD_EDIT_RESULT_OK
+import com.ayu.archetecture.todoapp.tasks.ui.utils.Event
 import kotlinx.coroutines.*
 
 /**
@@ -132,8 +133,10 @@ class TasksViewModel constructor(
         _openAddNewTaskEvent.value = Event(Unit)
     }
 
+    private val _openTaskEvent = MutableLiveData<Event<String>>()
+    val openTaskEvent: LiveData<Event<String>> = _openTaskEvent
     fun openTask(taskId: String) {
-        _snackbarText.value = Event(R.string.open_task)
+        _openTaskEvent.value = Event(taskId)
     }
 
     fun completeTask(task: Task, complete: Boolean) {
@@ -157,6 +160,17 @@ class TasksViewModel constructor(
 
     fun loadTasks(forceUpdate: Boolean) {
         _forceUpdate.value = forceUpdate
+    }
+
+    var resultMessageShown = false
+    fun showResultMessage(result: Int) {
+        if (resultMessageShown) return
+        when (result) {
+            //EDIT_RESULT_OK -> showSnackbarMessage(R.string.successfully_saved_task_message)
+            ADD_EDIT_RESULT_OK -> showSnackbar(R.string.successfully_added_task_message)
+            //DELETE_RESULT_OK -> showSnackbarMessage(R.string.successfully_deleted_task_message)
+        }
+        resultMessageShown = true
     }
 
     /**

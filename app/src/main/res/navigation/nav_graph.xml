@@ -6,16 +6,33 @@
 
     <fragment
         android:id="@+id/nav_task_list"
-        android:name="com.ayu.archetecture.todoapp.tasks.list.TasksFragment"
+        android:name="com.ayu.archetecture.todoapp.tasks.ui.list.TasksFragment"
         android:label="任务列表" >
         <argument
             android:name="userMessage"
             app:argType="integer"
             android:defaultValue="0"/>
+        <action
+            android:id="@+id/action_nav_task_list_to_edit"
+            app:destination="@id/nav_task_edit" />
     </fragment>
     <fragment
         android:id="@+id/nav_task_statistics"
-        android:name="com.ayu.archetecture.todoapp.tasks.statistics.StatisticsFragment"
+        android:name="com.ayu.archetecture.todoapp.tasks.ui.statistics.StatisticsFragment"
         android:label="任务统计">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_task_edit"
+        android:name="com.ayu.archetecture.todoapp.tasks.ui.edit.TaskEditFragment"
+        android:label="任务编辑">
+        <argument
+            android:name="taskId"
+            app:argType="string"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/action_nav_task_edit_to_list"
+            app:destination="@id/nav_task_list"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_task_list" />
     </fragment>
 </navigation>

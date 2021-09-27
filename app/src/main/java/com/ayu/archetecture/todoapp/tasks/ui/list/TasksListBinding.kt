@@ -1,7 +1,6 @@
-package com.ayu.archetecture.todoapp.tasks.list
+package com.ayu.archetecture.todoapp.tasks.ui.list
 
 import android.graphics.Paint
-import android.service.autofill.TextValueSanitizer
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

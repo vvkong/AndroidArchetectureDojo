@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.statistics
+package com.ayu.archetecture.todoapp.tasks.ui.statistics
 
 import android.os.Bundle
 import android.view.LayoutInflater

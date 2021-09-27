@@ -31,4 +31,13 @@ class Task @JvmOverloads constructor(
     val titleForList: String
         get() = if (title.isEmpty()) description else title
 
+    override fun equals(other: Any?): Boolean {
+        (other as? Task)?.let {
+            return id == it?.id &&
+                    isCompleted == it.isCompleted &&
+                    title == it.titleForList &&
+                    description == it.description
+        }
+        return false
+    }
 }

@@ -5,7 +5,7 @@
         <import type="android.widget.CompoundButton"/>
         <variable
             name="vm"
-            type="com.ayu.archetecture.todoapp.tasks.list.TasksViewModel" />
+            type="com.ayu.archetecture.todoapp.tasks.ui.list.TasksViewModel" />
         <variable
             name="task"
             type="com.ayu.archetecture.todoapp.tasks.data.entity.Task" />

@@ -1,13 +1,13 @@
 package com.ayu.archetecture.todoapp.tasks
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.ayu.archetecture.todoapp.tasks.data.TasksRepository
-import com.ayu.archetecture.todoapp.tasks.list.TasksViewModel
+import com.ayu.archetecture.todoapp.tasks.ui.edit.TaskEditViewModel
+import com.ayu.archetecture.todoapp.tasks.ui.list.TasksViewModel
 import java.lang.IllegalArgumentException
 
 /**
@@ -27,9 +27,8 @@ class ViewModelFactory constructor(
         handle: SavedStateHandle
     ): T = with(modelClass) {
        when {
-            isAssignableFrom(TasksViewModel::class.java) -> {
-                TasksViewModel(tasksRepository, handle)
-            }
+            isAssignableFrom(TasksViewModel::class.java) -> TasksViewModel(tasksRepository, handle)
+           isAssignableFrom(TaskEditViewModel::class.java) -> TaskEditViewModel(tasksRepository, handle)
             else -> throw IllegalArgumentException("未知ViewModel类: ${modelClass.name}")
         }
     } as T

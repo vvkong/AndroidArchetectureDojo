@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.ayu.archetecture.todoapp.tasks.ui.edit.TaskEditViewModel" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.ayu.archetecture.todoapp.tasks.ui.widget.ScrollChildSwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:enabled="@{vm.loading}"
+            app:refreshing="@{vm.loading}"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textColor="#303030"
+                    android:textSize="14sp"
+                    android:text="标题"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:text="@={vm.title}"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="300dp"
+                    android:gravity="top"
+                    android:hint="请输入任务内容"
+                    android:padding="8dp"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:text="@={vm.description}"
+                    android:background="@null"
+                    />
+
+            </LinearLayout>
+        </com.ayu.archetecture.todoapp.tasks.ui.widget.ScrollChildSwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/swipe_refresh_layout"
+            app:layout_anchorGravity="right|end|bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_done"
+            app:fabSize="normal"
+            android:onClick="@{()->vm.saveTask()}"
+            />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

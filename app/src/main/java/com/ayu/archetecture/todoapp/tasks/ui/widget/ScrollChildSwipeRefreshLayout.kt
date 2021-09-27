@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.widget
+package com.ayu.archetecture.todoapp.tasks.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet

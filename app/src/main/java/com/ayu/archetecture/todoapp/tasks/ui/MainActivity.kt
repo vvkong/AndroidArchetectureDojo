@@ -1,5 +1,6 @@
-package com.ayu.archetecture.todoapp.tasks
+package com.ayu.archetecture.todoapp.tasks.ui
 
+import android.app.Activity.RESULT_FIRST_USER
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -55,3 +56,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+const val ADD_EDIT_RESULT_OK = RESULT_FIRST_USER + 1

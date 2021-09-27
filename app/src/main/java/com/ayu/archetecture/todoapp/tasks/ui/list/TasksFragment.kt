@@ -1,16 +1,17 @@
-package com.ayu.archetecture.todoapp.tasks.list
+package com.ayu.archetecture.todoapp.tasks.ui.list
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ayu.archetecture.todoapp.R
 import com.ayu.archetecture.todoapp.databinding.FragmentTasksListBinding
-import com.ayu.archetecture.todoapp.tasks.utils.EventObserver
-import com.ayu.archetecture.todoapp.tasks.utils.getViewModelFactory
-import com.ayu.archetecture.todoapp.tasks.utils.setupRefreshLayout
-import com.ayu.archetecture.todoapp.tasks.utils.setupSnackBar
+import com.ayu.archetecture.todoapp.tasks.ui.utils.EventObserver
+import com.ayu.archetecture.todoapp.tasks.ui.utils.getViewModelFactory
+import com.ayu.archetecture.todoapp.tasks.ui.utils.setupRefreshLayout
+import com.ayu.archetecture.todoapp.tasks.ui.utils.setupSnackBar
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -56,6 +57,7 @@ class TasksFragment: Fragment() {
 
     private fun setupSnackBar() {
         view?.setupSnackBar(viewLifecycleOwner, viewModel.snackbarText, Snackbar.LENGTH_LONG)
+        args?.let { viewModel.showResultMessage(it.userMessage) }
     }
 
     private fun setupListAdapter() {
@@ -70,11 +72,14 @@ class TasksFragment: Fragment() {
         viewModel.openAddNewTaskEvent.observe(viewLifecycleOwner, EventObserver {
             navigateToAddNewTask()
         })
+        viewModel.openTaskEvent.observe(viewLifecycleOwner, EventObserver {
+            findNavController().navigate(TasksFragmentDirections.actionNavTaskListToEdit(it))
+        })
     }
 
     private fun navigateToAddNewTask() {
-        viewModel.showSnackbar(R.string.navigate_to_add_new_task)
-        // TODO
+        val directions = TasksFragmentDirections.actionNavTaskListToEdit(null)
+        findNavController().navigate(directions)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) = inflater.inflate(R.menu.tasks_fragment_menu, menu)

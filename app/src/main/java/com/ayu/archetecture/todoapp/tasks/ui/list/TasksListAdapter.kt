@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.list
+package com.ayu.archetecture.todoapp.tasks.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

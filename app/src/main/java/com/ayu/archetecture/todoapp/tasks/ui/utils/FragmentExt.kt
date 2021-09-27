@@ -1,4 +1,4 @@
-package com.ayu.archetecture.todoapp.tasks.utils
+package com.ayu.archetecture.todoapp.tasks.ui.utils
 
 import android.util.Log
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.ayu.archetecture.todoapp.R
 import com.ayu.archetecture.todoapp.tasks.App
 import com.ayu.archetecture.todoapp.tasks.ViewModelFactory
-import com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout
+import com.ayu.archetecture.todoapp.tasks.ui.widget.ScrollChildSwipeRefreshLayout
 
 /**
  * Author: allenwang
@@ -16,7 +16,6 @@ import com.ayu.archetecture.todoapp.tasks.widget.ScrollChildSwipeRefreshLayout
  */
 
 fun Fragment.getViewModelFactory(): ViewModelFactory {
-    Log.e("wrx", "getViewModelFactory")
     val repository = (requireContext().applicationContext as App).tasksRepository
     return ViewModelFactory(repository, this, arguments)
 }

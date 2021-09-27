@@ -18,4 +18,7 @@
     <string name="clear_completed_tasks">清除已完成任务</string>
     <string name="open_task">打开任务详情</string>
     <string name="navigate_to_add_new_task">打开新建任务界面</string>
+    <string name="title_not_allow_empty">标题不允许为空</string>
+    <string name="load_fail">加载失败</string>
+    <string name="successfully_added_task_message">添加任务成功</string>
 </resources>
